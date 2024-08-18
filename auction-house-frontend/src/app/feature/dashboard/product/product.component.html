@@ -1,0 +1,36 @@
+<div class="container">
+  <h5>Product Details</h5>
+  <app-navbar class="mb-4"></app-navbar>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h5 class="card-title mb-3">
+                {{ product?.title }}
+                <i class="fa-solid fa-star" *ngIf="isFavorite" (click)="removeFromFavorites()"></i>
+                <i class="fa-regular fa-star yellow mr-2" *ngIf="!isFavorite" (click)="addToFavorites()"></i>
+              </h5>
+            </div>
+          </div>
+          <p class="card-text mb-3"><strong>Description:</strong> {{ product?.description }}</p>
+          <p class="card-text mb-3"><strong>Price:</strong> ${{ product?.startingPrice }}</p>
+          <div class="text-center mb-4" *ngIf="product?.status === 'active'">
+            <button class="btn btn-primary btn-lg" (click)="openAddBidModal()">
+              Add Bid
+            </button>
+          </div>
+        </div>
+        <div class="card-footer">
+          <app-bid></app-bid>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="product-image-container">
+        <img class="img-fluid product-image" [src]="product?.imageUrl" alt="Product Image">
+      </div>
+    </div>
+  </div>
+</div>

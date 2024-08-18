@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Add Bid</h2>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Bid Amount" [(ngModel)]="bid.bidAmount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button color="primary" (click)="onAddClick()">Add Bid</button>
+</div>

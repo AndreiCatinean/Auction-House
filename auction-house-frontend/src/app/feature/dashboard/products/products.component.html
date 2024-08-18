@@ -1,0 +1,30 @@
+<div class="container">
+  <h5 *ngIf="endpoint === '/dashboard/products'">All products</h5>
+  <h5 *ngIf="endpoint === '/dashboard/listed-products'">Listed products</h5>
+  <h5 *ngIf="endpoint === '/dashboard/fav-offers'">Favorite products</h5>
+
+
+  <app-navbar></app-navbar>
+
+  <div class="p-2">
+
+    <button *ngIf="endpoint === '/dashboard/products'" class="btn btn-primary mr-2" (click)="openAddProductDialog()">
+      <i class="fa-solid fa-plus"></i> Add Product
+    </button>
+
+    <div *ngIf="products && products.size > 0">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let productBid of products.entries()">
+          <app-product-card [isClosingOffersPage]="endpoint === '/dashboard/close-offers'" [product]="productBid[0]"
+                            [latestBid]="productBid[1]" *ngIf="productBid[1] !== null"></app-product-card>
+          <app-product-card [isClosingOffersPage]="endpoint === '/dashboard/close-offers'" [product]="productBid[0]"
+                            [latestBid]="null" *ngIf="productBid[1] === null"></app-product-card>
+
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!(products && products.size > 0)">
+      <p>No products</p>
+    </div>
+  </div>
+</div>

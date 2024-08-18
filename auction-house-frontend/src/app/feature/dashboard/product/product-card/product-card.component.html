@@ -1,0 +1,32 @@
+<div class="card shadow-lg p-2 m-2" [ngClass]="getCardColor()">
+  <div class="d-flex flex-row">
+    <div class="m-2">
+      <i class="fa fa-box fa-2x"></i>
+    </div>
+    <div class="d-flex flex-column me-auto">
+      <span class="fw-bold">Title: {{ product.title }}</span>
+      <span>Starting Price: {{ product.startingPrice }}</span>
+      <!-- Display latest bid information or "No bids yet" -->
+      <span *ngIf="latestBid !== null">Latest Bid: {{ latestBid.bidAmount }}</span>
+      <span *ngIf="latestBid === null">No bids yet</span>
+      <!-- Display remaining time -->
+      <span *ngIf="product.endTime">
+        <ng-container
+          *ngIf="calculateRemainingTime(product.endTime) !== '0 days, 0 hours, 0 minutes'; else closingSoon">
+          Remaining Time: {{ calculateRemainingTime(product.endTime) }}
+        </ng-container>
+        <ng-template #closingSoon>Auction will close soon</ng-template>
+      </span>
+      <!-- You can add more details here as needed -->
+    </div>
+    <div class="d-flex align-items-center">
+      <!-- Ban icon for closing offers page -->
+      <div *ngIf="isClosingOffersPage" class="me-2">
+        <i class="fa-solid fa-check" style="color: #0f5050; font-size: 1.5em;" (click)="endAuction()"></i>
+      </div>
+      <button (click)="viewDetails(product.id)" class="btn btn-primary">
+        <i class="fa fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </div>
+</div>

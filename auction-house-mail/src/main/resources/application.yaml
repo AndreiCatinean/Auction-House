@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: auction-house-mail
+  mail:
+    host: smtp.mailtrap.io
+    port: 587
+    username: ade610c134db8d
+    password: 0660ec1c4cc20a
+server:
+  port: 8888
+  servlet:
+    context-path: '/api'
+  error:
+    whitelabel:
+      enabled: false

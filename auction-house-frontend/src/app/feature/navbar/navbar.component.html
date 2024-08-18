@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="navbar-left">
+    <i class="fa-solid fa-house" (click)="navigateToDashboard()"></i> <!-- Home icon -->
+    <i class="fa-solid fa-ban ban-icon" *ngIf="isAdmin" (click)="navigateToCloseOffers()"></i>
+  </div>
+  <div class="navbar-center">
+    <img src="https://www.auctionhouse.co.uk/content/images/logo.png" alt="Auction House Logo">
+  </div>
+  <div class="navbar-right">
+    <button *ngIf="!isAdmin" mat-icon-button [matMenuTriggerFor]="userMenu">
+      <i class="fa-regular fa-user"></i>
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="navigateToListedProducts()">Listed Products</button>
+      <button mat-menu-item (click)="navigateToFavOffers()">Favorite Offers</button>
+      <button mat-menu-item (click)="navigateToMyTransactions()">My Transactions</button>
+    </mat-menu>
+    <button (click)="logOut()" class="btn btn-danger">
+      Logout
+    </button>
+  </div>
+</div>

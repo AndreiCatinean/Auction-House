@@ -1,0 +1,54 @@
+<div class="container">
+  <h5>Transactions</h5>
+  <app-navbar></app-navbar>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><i class="fa-solid fa-truck-fast"></i> Transactions as Seller</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Product</th>
+          <th>Buyer Email</th>
+          <th>Amount</th>
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let transaction of sellerTransactions">
+          <td>{{ transaction.product.title }}</td>
+          <td>{{ transaction.transaction.buyerEmail }}</td>
+          <td>{{ transaction.transaction.amount }}</td>
+          <td><i class="fa-solid fa-truck-fast"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <h3><i class="fa-solid fa-envelope"></i> Transactions as Buyer</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Product</th>
+          <th>Seller Email</th>
+          <th>Amount</th>
+          <th>Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let transaction of buyerTransactions">
+          <td>{{ transaction.product.title }}</td>
+          <td>{{ transaction.transaction.sellerEmail }}</td>
+          <td>{{ transaction.transaction.amount }}</td>
+          <td><i class="fa-solid fa-envelope"></i></td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
